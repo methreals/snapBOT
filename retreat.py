@@ -1,6 +1,7 @@
+# retreat early
 from transitionMethods import *
 from imageProc import *
-from transition import transitions
+from transition import transitions_retreat
 import win32gui
 from botState import botState
 
@@ -14,11 +15,11 @@ time.sleep(2)
 
 button_position = imgCheck('mission') 
 if (button_position is not None):
-    tap_away(coord.PLAY_BUTTON)
+    tap(coord.PLAY_BUTTON)
     time.sleep(4)
 
 bot = botState()
-bot.add_state(transitions)
+bot.add_state(transitions_retreat)
 while True:
     bot.printstates()
     bot.run_state()
