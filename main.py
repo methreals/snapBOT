@@ -1,6 +1,6 @@
 from transitionMethods import *
 from imageProc import *
-from transition import transitions
+from transitions import transitions
 import win32gui
 from botState import botState
 

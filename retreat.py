@@ -1,7 +1,7 @@
 # retreat early
 from transitionMethods import *
 from imageProc import *
-from transition import transitions_retreat
+from transitions import transitions_retreat
 import win32gui
 from botState import botState
 
