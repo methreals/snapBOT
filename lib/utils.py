@@ -1,7 +1,7 @@
 import pyautogui
 import time
-import coord
 import random
+import lib.coord
 
 # duration in ms
 def swipe(x1, y1, x2, y2, duration):
@@ -15,7 +15,7 @@ def swipe(x1, y1, x2, y2, duration):
     pyautogui.mouseUp()
     time.sleep(0.08)
     pyautogui.moveTo(
-        coord.IDLE_MOUSE_POSITION[0], coord.IDLE_MOUSE_POSITION[1])
+        lib.coord.IDLE_MOUSE_POSITION[0], lib.coord.IDLE_MOUSE_POSITION[1])
     pyautogui.click()
 
 
@@ -29,8 +29,11 @@ def tap(pos):
 def tap_away(pos):
     tap(pos)
     pyautogui.moveTo(
-        coord.IDLE_MOUSE_POSITION[0], coord.IDLE_MOUSE_POSITION[1])
+        lib.coord.IDLE_MOUSE_POSITION[0], lib.coord.IDLE_MOUSE_POSITION[1])
 
 def tap_away_tap(pos):
     tap(pos)
-    tap(coord.IDLE_MOUSE_POSITION)
+    tap(lib.coord.IDLE_MOUSE_POSITION)
+
+def regionRawConvert(raw_region):
+    return (raw_region[0],raw_region[1],raw_region[2]-raw_region[0],raw_region[3]-raw_region[1])

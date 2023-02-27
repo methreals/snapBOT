@@ -7,20 +7,23 @@ import time
 
 
 win32gui.MessageBox(None, "Press OK to start.", "", 0)
-hwnd = win32gui.FindWindow(None, "SNAP")
+hwnd = win32gui.FindWindow(None, "LDPlayer")
 win32gui.SetForegroundWindow(hwnd)
 width, height = 405, 720
 win32gui.MoveWindow(hwnd, 0, 0, width, height, True)
 time.sleep(2)
 
-button_position = imgCheck('mission') 
+
+button_position = imgCheck('mission',emulator=True) 
 if (button_position is not None):
-    tap_away(lib.coord.PC['PLAY_BUTTON'])
+    tap_away(lib.coord.emu['PLAY_BUTTON'])
     time.sleep(4)
 
-bot = botState()
+
+bot = botState(early_retreats=False,emu=True)
 
 while True:
     bot.printstates()
     bot.run_state()
     time.sleep(1)
+

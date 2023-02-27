@@ -3,10 +3,15 @@ from pyautogui import *
 
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-image_path = os.path.join(script_dir, 'images')
+
 region = (10, 32, 490 - 10, 671 - 32) # inaccurate
 
-def imgCheck(str, confidence=0.95, grayscale=True, region=region):
+
+def imgCheck(str, confidence=0.95, region=region, grayscale=True, emulator = False):
+    if (emulator):
+        image_path = os.path.join(script_dir, '..', 'images_emulator')
+    else:
+        image_path = os.path.join(script_dir, '..', 'images')
     image_pos = locateCenterOnScreen(
         image_path + '/' + str + '.png', confidence=confidence, grayscale=grayscale, region=region)
     return image_pos
@@ -16,7 +21,7 @@ def locateColorOnScreen(rgbHex,region=region):
     color = decCovert(rgbHex)
     image = screenshot(region=region)
     # print(image.width,image.height)
-    step = 2 # skipping pixels
+    step = 3 # skipping pixels
     for x in range(0,image.width,step):
         for y in range(0,image.height,step):
             # Get the RGB color of the pixel at (x, y)
