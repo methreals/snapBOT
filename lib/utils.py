@@ -37,3 +37,7 @@ def tap_away_tap(pos):
 
 def regionRawConvert(raw_region):
     return (raw_region[0],raw_region[1],raw_region[2]-raw_region[0],raw_region[3]-raw_region[1])
+
+def random_int_exclude(a, options):
+    options.remove(a)
+    return random.choice(options)
